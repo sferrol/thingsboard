@@ -56,7 +56,7 @@ function additionalComposeQueueArgs() {
         ;;
         *)
         echo "Unknown Queue service value specified: '${TB_QUEUE_TYPE}'. Should be either kafka or confluent or aws-sqs or pubsub or rabbitmq or service-bus." >&2
-        exit 1
+        # exit 1
     esac
     echo $ADDITIONAL_COMPOSE_QUEUE_ARGS
 }

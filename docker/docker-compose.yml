@@ -41,7 +41,7 @@ services:
     restart: always
     image: "${DOCKER_REPO}/${TB_NODE_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
       - "7070"
     logging:
       driver: "json-file"
@@ -67,7 +67,7 @@ services:
     restart: always
     image: "${DOCKER_REPO}/${TB_NODE_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
       - "7070"
     logging:
       driver: "json-file"
@@ -93,7 +93,7 @@ services:
     restart: always
     image: "${DOCKER_REPO}/${TB_NODE_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
     logging:
       driver: "json-file"
       options:
@@ -115,7 +115,7 @@ services:
     restart: always
     image: "${DOCKER_REPO}/${TB_NODE_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
     logging:
       driver: "json-file"
       options:
@@ -203,44 +203,44 @@ services:
       - ./tb-transports/coap/log:/var/log/tb-coap-transport
     depends_on:
       - zookeeper
-  tb-lwm2m-transport:
-    restart: always
-    image: "${DOCKER_REPO}/${LWM2M_TRANSPORT_DOCKER_NAME}:${TB_VERSION}"
-    ports:
-      - "5685:5685/udp"
-    environment:
-      TB_SERVICE_ID: tb-lwm2m-transport
-    env_file:
-      - tb-lwm2m-transport.env
-    volumes:
-      - ./tb-transports/lwm2m/conf:/config
-      - ./tb-transports/lwm2m/log:/var/log/tb-lwm2m-transport
-    depends_on:
-      - zookeeper
-  tb-snmp-transport:
-    restart: always
-    image: "${DOCKER_REPO}/${SNMP_TRANSPORT_DOCKER_NAME}:${TB_VERSION}"
-    environment:
-      TB_SERVICE_ID: tb-snmp-transport
-    env_file:
-      - tb-snmp-transport.env
-    volumes:
-      - ./tb-transports/snmp/conf:/config
-      - ./tb-transports/snmp/log:/var/log/tb-snmp-transport
-    depends_on:
-      - zookeeper
+#   tb-lwm2m-transport:
+#     restart: always
+#     image: "${DOCKER_REPO}/${LWM2M_TRANSPORT_DOCKER_NAME}:${TB_VERSION}"
+#     ports:
+#       - "5685:5685/udp"
+#     environment:
+#       TB_SERVICE_ID: tb-lwm2m-transport
+#     env_file:
+#       - tb-lwm2m-transport.env
+#     volumes:
+#       - ./tb-transports/lwm2m/conf:/config
+#       - ./tb-transports/lwm2m/log:/var/log/tb-lwm2m-transport
+#     depends_on:
+#       - zookeeper
+#   tb-snmp-transport:
+#     restart: always
+#     image: "${DOCKER_REPO}/${SNMP_TRANSPORT_DOCKER_NAME}:${TB_VERSION}"
+#     environment:
+#       TB_SERVICE_ID: tb-snmp-transport
+#     env_file:
+#       - tb-snmp-transport.env
+#     volumes:
+#       - ./tb-transports/snmp/conf:/config
+#       - ./tb-transports/snmp/log:/var/log/tb-snmp-transport
+#     depends_on:
+#       - zookeeper
   tb-web-ui1:
     restart: always
     image: "${DOCKER_REPO}/${WEB_UI_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
     env_file:
       - tb-web-ui.env
   tb-web-ui2:
     restart: always
     image: "${DOCKER_REPO}/${WEB_UI_DOCKER_NAME}:${TB_VERSION}"
     ports:
-      - "8080"
+      - "8082"
     env_file:
       - tb-web-ui.env
   haproxy:
